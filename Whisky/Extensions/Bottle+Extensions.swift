@@ -166,7 +166,7 @@ extension Bottle {
             }
             BottleVM.shared.loadBottles()
         } catch {
-            print("Failed to move bottle")
+            ToastManager.shared.show("Failed to move bottle: \(error.localizedDescription)")
         }
     }
 
@@ -174,7 +174,9 @@ extension Bottle {
         do {
             try Tar.tar(folder: url, toURL: destination)
         } catch {
-            print("Failed to export bottle")
+            Task { @MainActor in
+                ToastManager.shared.show("Failed to export bottle: \(error.localizedDescription)")
+            }
         }
     }
 
@@ -194,7 +196,7 @@ extension Bottle {
             }
             BottleVM.shared.loadBottles()
         } catch {
-            print("Failed to remove bottle")
+            ToastManager.shared.show("Failed to remove bottle: \(error.localizedDescription)")
         }
     }
 

@@ -64,6 +64,9 @@ final class BottleVM: ObservableObject, @unchecked Sendable {
                 }
             } catch {
                 print("Failed to create new bottle: \(error)")
+                await MainActor.run {
+                    ToastManager.shared.show("Failed to create bottle: \(error.localizedDescription)")
+                }
                 if let bottle = bottleId {
                     await MainActor.run {
                         if let index = self.bottles.firstIndex(of: bottle) {

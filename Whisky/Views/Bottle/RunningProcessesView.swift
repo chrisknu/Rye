@@ -83,7 +83,7 @@ struct RunningProcessesView: View {
         do {
             output = try await Wine.runWine(["tasklist.exe"], bottle: bottle)
         } catch {
-            print("Error running tasklist.exe: \(error)")
+            ToastManager.shared.show("Failed to list running processes")
             output = ""
         }
 
@@ -105,7 +105,7 @@ struct RunningProcessesView: View {
                 try await Wine.runWine(["taskkill.exe", "/PID", thisProcess.pid, "/F"], bottle: bottle)
                 try await Task.sleep(nanoseconds: 2000)
             } catch {
-                print("Error running taskkill.exe: \(error)")
+                ToastManager.shared.show("Failed to kill process")
             }
             await fetchProcesses()
         }

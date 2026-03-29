@@ -61,7 +61,7 @@ struct ConfigView: View {
                                     try await Wine.changeBuildVersion(bottle: bottle, version: buildVersion)
                                     buildVersionLoadingState = .success
                                 } catch {
-                                    print("Failed to change build version")
+                                    ToastManager.shared.show("Failed to change build version")
                                     buildVersionLoadingState = .failed
                                 }
                             }
@@ -76,7 +76,7 @@ struct ConfigView: View {
                                     try await Wine.changeRetinaMode(bottle: bottle, retinaMode: newValue)
                                     retinaModeLoadingState = .success
                                 } catch {
-                                    print("Failed to change build version")
+                                    ToastManager.shared.show("Failed to change retina mode")
                                     retinaModeLoadingState = .failed
                                 }
                             }
@@ -164,7 +164,7 @@ struct ConfigView: View {
                         do {
                             try await Wine.control(bottle: bottle)
                         } catch {
-                            print("Failed to launch control")
+                            ToastManager.shared.show("Failed to launch Control Panel")
                         }
                     }
                 }
@@ -173,7 +173,7 @@ struct ConfigView: View {
                         do {
                             try await Wine.regedit(bottle: bottle)
                         } catch {
-                            print("Failed to launch regedit")
+                            ToastManager.shared.show("Failed to launch Registry Editor")
                         }
                     }
                 }
@@ -182,7 +182,7 @@ struct ConfigView: View {
                         do {
                             try await Wine.cfg(bottle: bottle)
                         } catch {
-                            print("Failed to launch winecfg")
+                            ToastManager.shared.show("Failed to launch Wine Configuration")
                         }
                     }
                 }
@@ -200,7 +200,7 @@ struct ConfigView: View {
                     retinaMode = try await Wine.retinaMode(bottle: bottle)
                     retinaModeLoadingState = .success
                 } catch {
-                    print(error)
+                    ToastManager.shared.show("Failed to load retina mode: \(error.localizedDescription)")
                     retinaModeLoadingState = .failed
                 }
             }
@@ -226,7 +226,7 @@ struct ConfigView: View {
                         bottle.settings.windowsVersion = newValue
                         loadBuildName()
                     } catch {
-                        print(error)
+                        ToastManager.shared.show("Failed to change Windows version: \(error.localizedDescription)")
                         winVersionLoadingState = .failed
                     }
                 }
@@ -240,7 +240,7 @@ struct ConfigView: View {
                         try await Wine.changeDpiResolution(bottle: bottle, dpi: dpiConfig)
                         dpiConfigLoadingState = .success
                     } catch {
-                        print(error)
+                        ToastManager.shared.show("Failed to change DPI: \(error.localizedDescription)")
                         dpiConfigLoadingState = .failed
                     }
                 }
@@ -259,7 +259,7 @@ struct ConfigView: View {
 
                 buildVersionLoadingState = .success
             } catch {
-                print(error)
+                ToastManager.shared.show("Failed to load build version: \(error.localizedDescription)")
                 buildVersionLoadingState = .failed
             }
         }
