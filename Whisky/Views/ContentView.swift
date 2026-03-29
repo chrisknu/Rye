@@ -43,6 +43,7 @@ struct ContentView: View {
         } detail: {
             detail
         }
+        .toastOverlay()
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
