@@ -19,12 +19,12 @@
 import Foundation
 
 public enum WhiskyConfig {
-    /// Base URL for self-hosted Wine distribution files.
-    private static let baseURL = "https://whisky.knuteson.io"
+    /// Base URL for self-hosted Wine distribution files (GitHub Releases).
+    private static let baseURL = "https://github.com/chrisknu/Whisky/releases/download/v2.5.0-wine"
 
     /// URL to the Wine libraries tarball downloaded during setup.
-    public static let wineDownloadURL = "\(baseURL)/Wine/Libraries.tar.gz"
+    public static let wineDownloadURL = "\(baseURL)/Libraries.tar.gz"
 
     /// URL to the Wine version plist used for update checks.
-    public static let wineVersionURL = "\(baseURL)/Wine/WhiskyWineVersion.plist"
+    public static let wineVersionURL = "\(baseURL)/WhiskyWineVersion.plist"
 }
