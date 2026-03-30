@@ -87,7 +87,7 @@ struct WhiskyApp: App {
             }
             CommandGroup(replacing: .help) {
                 Button("help.github") {
-                    if let url = URL(string: "https://github.com/chrisknu/Whisky") {
+                    if let url = URL(string: "https://github.com/chrisknu/Rye") {
                         openURL(url)
                     }
                 }

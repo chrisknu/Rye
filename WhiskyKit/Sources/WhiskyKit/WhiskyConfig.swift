@@ -20,7 +20,7 @@ import Foundation
 
 public enum WhiskyConfig {
     /// Base URL for self-hosted Wine distribution files (GitHub Releases).
-    private static let baseURL = "https://github.com/chrisknu/Whisky/releases/download/v2.5.0-wine"
+    private static let baseURL = "https://github.com/chrisknu/Rye/releases/download/v2.5.0-wine"
 
     /// URL to the Wine libraries tarball downloaded during setup.
     public static let wineDownloadURL = "\(baseURL)/Libraries.tar.gz"
